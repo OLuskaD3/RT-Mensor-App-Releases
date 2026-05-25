@@ -1,81 +1,82 @@
-# RT Mensor — Releases
+<div align="center">
 
-Distribuição oficial dos instaladores do **RT Mensor**, sistema fiscal
-desktop da Mênsor & Martins para apuração de PIS/COFINS.
+# RT Mensor — Instaladores Oficiais
 
-## Download da versão mais recente
+**Distribuição pública dos instaladores assinados do RT Mensor**
 
-[**Baixar instalador (Windows)**](https://github.com/OLuskaD3/RT-Mensor-App-Releases/releases/latest)
+[![Última versão](https://img.shields.io/github/v/release/OLuskaD3/RT-Mensor-App-Releases?style=flat-square&label=última%20versão)](https://github.com/OLuskaD3/RT-Mensor-App-Releases/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/OLuskaD3/RT-Mensor-App-Releases/total?style=flat-square)](https://github.com/OLuskaD3/RT-Mensor-App-Releases/releases)
+[![Plataforma](https://img.shields.io/badge/Windows-10%2B-blue?style=flat-square&logo=windows)](https://github.com/OLuskaD3/RT-Mensor-App-Releases/releases/latest)
 
-Clique em "Assets" no release mais recente e baixe o arquivo
-`RT.Mensor_<versão>_x64-setup.exe` (~6 MB).
-
-## Como instalar
-
-1. Execute o `.exe` baixado.
-2. Aceite o instalador NSIS (instalação por máquina, requer elevação).
-3. Atalho criado no menu Iniciar como **RT Mensor**.
-
-Funciona em **Windows 10/11** (a versão 11 já vem com o WebView2 necessário).
-
-## Atualizações automáticas
-
-O app verifica novas versões ao iniciar e a cada ~4 horas em background.
-Quando uma versão nova é publicada aqui, o app:
-
-1. Detecta automaticamente via `latest.json` deste repositório.
-2. Avisa o usuário com um banner discreto.
-3. Baixa em segundo plano e aplica na próxima reinicialização.
-
-Nenhum servidor externo é envolvido — o updater consulta diretamente
-o GitHub. Sem coleta de telemetria, sem login, sem rede além do
-download da versão nova.
-
-## Funciona offline
-
-Após instalado, o RT Mensor **não precisa de conexão** para:
-
-- Importar documentos fiscais (XLSX, CSV, PDF)
-- Calcular apurações de PIS/COFINS
-- Gerar grade fiscal, diagnóstico, oportunidades, relatórios
-- Editar planilhas dinâmicas com filtros, ordenação e tabelas dinâmicas
-- Exportar tudo em XLSX
-
-Internet só é usada para a checagem de atualização (opcional, pode ser
-desligada nas configurações).
-
-## Onde ficam seus dados
-
-| Item                   | Localização                                              |
-|------------------------|----------------------------------------------------------|
-| Banco principal        | `%APPDATA%\RT Mensor\data\rtm.sqlite`                    |
-| Backups automáticos    | `%APPDATA%\RT Mensor\backups\rtm-YYYYMMDD-HHMM.sqlite`   |
-| Documentos importados  | `%APPDATA%\RT Mensor\documents\<cliente_id>\…`           |
-| Logs                   | `%APPDATA%\RT Mensor\logs\rtm-YYYY-MM-DD.log`            |
-| Configuração           | `%APPDATA%\RT Mensor\config.toml`                        |
-
-**Tudo local, em arquivos seus.** Backup é uma simples cópia do
-diretório `%APPDATA%\RT Mensor\`.
-
-## Histórico de versões
-
-Veja a aba [Releases](https://github.com/OLuskaD3/RT-Mensor-App-Releases/releases)
-para changelog de cada versão.
-
-## Suporte
-
-Suporte oficial via Mênsor & Martins. Para problemas técnicos,
-inclua na descrição:
-
-- Versão do app (Configurações → Sobre)
-- Sistema operacional e versão
-- Arquivo de log do dia em `%APPDATA%\RT Mensor\logs\`
-
-## Sobre a Mênsor & Martins
-
-Site: https://mensormartins.com.br
+</div>
 
 ---
 
-**Este repositório contém apenas os binários publicados.** O código-fonte
-do RT Mensor é mantido em repositório separado da organização.
+##  Download da última versão
+
+ **[Baixar instalador mais recente](https://github.com/OLuskaD3/RT-Mensor-App-Releases/releases/latest)**
+
+Procure o arquivo `RT.Mensor_X.Y.Z_x64-setup.exe` e execute. Após a
+primeira instalação, o aplicativo se atualiza automaticamente em até
+4 horas após cada nova versão publicada.
+
+---
+
+##  Sobre este repositório
+
+**Este repositório contém apenas binários compilados** — não há
+código-fonte aqui. Cada release inclui:
+
+| Arquivo | Descrição |
+|---|---|
+| `RT.Mensor_X.Y.Z_x64-setup.exe` | Instalador NSIS para Windows x86_64 |
+| `RT.Mensor_X.Y.Z_x64-setup.exe.sig` | Assinatura digital Ed25519 do `.exe` |
+| `latest.json` | Manifesto para o updater automático |
+
+Todos os instaladores são **assinados digitalmente**. O próprio
+aplicativo verifica a assinatura antes de aplicar uma atualização —
+qualquer adulteração do `.exe` durante o download é rejeitada.
+
+---
+
+##  Segurança
+
+A chave pública usada para verificar as assinaturas vem **embutida**
+no próprio aplicativo. Cenários de ataque cobertos:
+
+- ✅ **MITM no download** → assinatura do `.exe` não bate → app recusa
+- ✅ **Este repositório comprometido** → idem
+- ✅ **Atacante rouba chave pública** → não há nada que ele faça (é pública)
+
+A chave privada de assinatura mora **fora deste repositório**, sob
+custódia da Mênsor & Martins.
+
+---
+
+##  Onde NÃO procurar suporte aqui
+
+- **Não há issues abertas** para uso do aplicativo neste repositório
+  público (público mas não-colaborativo).
+- **Dúvidas operacionais** → entre em contato pelos canais internos
+  da Mênsor & Martins.
+- **Bugs e sugestões** → reportados no repositório privado de
+  desenvolvimento (acesso restrito).
+
+---
+
+##  Histórico de versões
+
+O histórico completo de mudanças está disponível na seção
+[Releases](https://github.com/OLuskaD3/RT-Mensor-App-Releases/releases)
+e nas notas de cada versão.
+
+Para o CHANGELOG técnico detalhado, consulte o repositório de
+desenvolvimento (acesso restrito).
+
+---
+
+<div align="center">
+
+**Mênsor & Martins** · Inteligência Tributária · © 2026
+
+</div>
